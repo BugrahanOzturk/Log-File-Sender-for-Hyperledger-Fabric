@@ -1,0 +1,23 @@
+{
+  "name": "source_code",
+  "version": "1.0.0",
+  "description": "",
+  "main": "AppUtil.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BugrahanOzturk/Log-File-Sender-for-Hyperledger-Fabric.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BugrahanOzturk/Log-File-Sender-for-Hyperledger-Fabric/issues"
+  },
+  "homepage": "https://github.com/BugrahanOzturk/Log-File-Sender-for-Hyperledger-Fabric#readme",
+  "dependencies": {
+    "fabric-ca-client": "^2.2.13",
+    "fabric-network": "^2.2.13"
+  }
+}
