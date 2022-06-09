@@ -73,3 +73,33 @@ exports.get_logfile = async () => {
 		console.error(`******** FAILED to retrieve the current logfile from the ledger state: ${error}`);
 	}
 }
+
+exports.receive_line = async (line) => {
+	try{
+		console.log('\n--> Submit Transaction: Receive_Line, adds a new line to the existing logfile');
+		let result = await contract.submitTransaction('Receive_Line', line);
+		console.log('*** Result: committed');
+	} catch(error) {
+		console.error(`******** FAILED to add a line to the existing logfile: ${error}`)
+	}
+}
+
+exports.delete_logfile = async (line) => {
+	try{
+		console.log('\n--> Submit Delete_LogFile: Deletes the current logfile on the ledger state');
+		let result = await contract.submitTransaction('Delete_LogFile');
+		console.log('*** Result: committed');
+	} catch(error) {
+		console.error(`******** FAILED to delete the current logfile on the ledger state: ${error}`)
+	}
+}
+
+exports.dummy_tx = async () => {
+	try{
+		console.log('\n--> Submit Dummy_Tx: Sends a dummy transaction to the ledger state');
+		let result = await contract.submitTransaction('Dummy_Tx');
+		console.log('*** Result: committed');
+	} catch(error) {
+		console.error(`******** FAILED to send the dummy transaction to the ledger state: ${error}`)
+	}
+}

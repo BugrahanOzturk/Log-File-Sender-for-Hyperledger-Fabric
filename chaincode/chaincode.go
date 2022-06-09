@@ -76,6 +76,28 @@ func (s *SmartContract) Delete_LogFile(ctx contractapi.TransactionContextInterfa
 	return nil
 }
 
+func (s *SmartContract) Dummy_Tx(ctx contractapi.TransactionContextInterface) error {
+	// Get ID of submitting client identity
+	caller, err := ctx.GetClientIdentity().GetID()
+	if err != nil {
+		return fmt.Errorf("failed to get client id: %v", err)
+	}
+
+	// Create compositeKey for the token owner
+	comp_key, err := ctx.GetStub().CreateCompositeKey("dummy_tx", []string{caller})
+	if err != nil {
+		return fmt.Errorf("failed to create withdraw key for prefix %s: %v", "dummy_tx", err)
+	}
+
+	err = ctx.GetStub().PutState(comp_key, []byte(""))
+	if err != nil {
+		return err
+	}
+
+	log.Printf("Succesfully added a dummy tx")
+	return nil
+}
+
 func main() {
 	logFileChaincode, err := contractapi.NewChaincode(&SmartContract{})
 	if err != nil {
